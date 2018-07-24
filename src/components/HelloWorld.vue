@@ -68,10 +68,11 @@ export default {
       }
     },
     fileImport () {
+      if (document.getElementById('files').files.length === 0) return;
       var selectedFile = document.getElementById('files').files[0]
       // var name = selectedFile.name
       // var size = selectedFile.size
-
+      
       var r = new FileReader()
       r.readAsText(selectedFile)
       r.onload = () => {
@@ -137,7 +138,6 @@ export default {
           this.word_list_sub.push(new String(now)) // add to sub
           this.dictionary[now] = this.word_list_sub.length
         }
-        console.log(this.dictionary)
         if (!this.dictionary[s_end] || !this.dictionary[s_begin]) {
           return 'The two words must be found in the dictionary.'
         }
